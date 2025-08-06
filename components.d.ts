@@ -11,13 +11,11 @@ declare module 'vue' {
     AButton: typeof import('ant-design-vue/es')['Button']
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
-    AForm: typeof import('ant-design-vue/es')['Form']
     AInput: typeof import('ant-design-vue/es')['Input']
     APopconfirm: typeof import('ant-design-vue/es')['Popconfirm']
     AppTheme: typeof import('./src/components/AppTheme.vue')['default']
     ASpace: typeof import('ant-design-vue/es')['Space']
     ATable: typeof import('ant-design-vue/es')['Table']
     ATypographyLink: typeof import('ant-design-vue/es')['TypographyLink']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
   }
 }

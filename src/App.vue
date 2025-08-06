@@ -10,6 +10,7 @@ export interface DataType {
   name: string;
   completed: boolean;
 }
+export type DataIndex = 'key' | "name" | "completed"
 const genId = () => Math.random().toString(36).substring(2, 9);
 const initialTheme =
   localStorage.getItem("theme") ??
@@ -38,6 +39,7 @@ const remove = (record: Partial<DataType>) => {
   data.splice(index, 1);
   localStorage.setItem("tasks", JSON.stringify(data));
 };
+
 const columns = [
   {
     title: "Name",
@@ -141,8 +143,8 @@ const cancel = (key: string) => {
           <template #bodyCell="{ column, text, record }">
             <template v-if="['name'].includes(column.dataIndex)">
               <div>
-                <a-input v-if="editableData[record.key]" v-model:value="editableData[record.key][column.dataIndex]"
-                  style="margin: -5px 0" />
+                <a-input v-if="editableData[record.key]"
+                  v-model:value="editableData[record.key][column.dataIndex as DataIndex]" style="margin: -5px 0" />
                 <template v-else>
                   {{ text }}
                 </template>
@@ -151,7 +153,7 @@ const cancel = (key: string) => {
             <template v-if="['completed'].includes(column.dataIndex)">
               <div>
                 <a-checkbox v-if="editableData[record.key]"
-                  v-model:checked="editableData[record.key][column.dataIndex]" />
+                  v-model:checked="editableData[record.key][column.dataIndex as DataIndex]" />
                 <template v-else>
                   <a-checkbox :checked="record['completed']" disabled />
                 </template>
